@@ -1,23 +1,129 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+
+
+
+import classes from './App.module.css';
 
 function App() {
+
+
+  const [homepage, setHomePage]= useState(true);
+  const [contactuspage, setContactusPage]= useState(false); 
+  const [teampage, setTeamPage]= useState(false);
+  const [careerpage, setCareerPage]= useState(false);
+  
+  function showHomePage(){
+
+    setHomePage(true);
+    setContactusPage(false);
+    setTeamPage(false);
+    setCareerPage(false);
+
+  }
+
+
+  function showContactusPage(){
+
+    setHomePage(false);
+    setContactusPage(true);
+    setTeamPage(false);
+    setCareerPage(false);
+
+  }
+  function showTeamPage(){
+
+    setHomePage(false);
+    setContactusPage(false);
+    setTeamPage(true);
+    setCareerPage(false);
+
+  }
+
+
+  function showCareerPage(){
+
+    setHomePage(false);
+    setContactusPage(false);
+    setTeamPage(false);
+    setCareerPage(true);
+
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={classes.app}>
+
+      <div className={classes.header} >
+        <div style={{borderStyle:'solid',color:"blue",marginLeft:"30px"}} 
+             onClick={showHomePage}
+             >
+          Home
+        </div>
+
+        <div style={{borderStyle:'solid',color:'blue',marginLeft:"30px" }}
+           onClick={showContactusPage}
         >
-          Learn React
-        </a>
-      </header>
+          Contact us
+
+        </div>
+	
+        <div style={{borderStyle:'solid',color:"blue",marginLeft:"30px"}}
+             onClick={showTeamPage}
+             >  
+        Team
+        </div>
+        <div style={{borderStyle:'solid',color:"blue",marginLeft:"30px"}}
+             onClick={showCareerPage}
+             >
+        Career
+        </div>
+
+      </div>
+    
+
+      <div className={classes.body}>
+
+
+        { homepage &&
+        <div className={classes.home} style={{backgroundColor:"white",height:"100%"}} >
+    
+           This is home page  
+         
+        </div>
+
+        }
+
+
+        { contactuspage &&
+        <div className={classes.contactus} style={{backgroundColor:"green",height:"100%"}} >
+      
+          This is contact us page.		
+        </div>
+
+        }
+        
+        { teampage &&
+        <div className={classes.team} style={{backgroundColor:"yellow",height:"100%"}} >
+
+          This is team page
+        </div>
+
+        }
+
+	{ careerpage &&
+        <div className={classes.career} style={{backgroundColor:"red",height:"100%"}}>
+
+          This is career page
+        </div>
+
+        }
+
+      </div>
+
+
+
+
+
     </div>
   );
 }
